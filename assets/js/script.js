@@ -1,10 +1,33 @@
 $(document).ready(function(){
-
-    $(".button").on("click", function() {
-
-    // utelly api
+  
+  $(".button").on("click", function() {
+    var genre = $("#genre :selected").val()
     var userInput = $(".mov").val()
     var userZip = $(".zip").val()
+    
+    if (userInput === "") {
+      console.log(genre);
+      
+      var queryURL = "https://api.themoviedb.org/3/discover/movie?api_key=7a5e1c0d82259f941772e1baf73aad08&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=1945-01-01&primary_release_date.lte=2020-12-31&vote_average.gte=6&with_genres=" + genre;
+      $.ajax({
+      url: queryURL,
+      method: "GET"
+      }).then(function(response) {
+      console.log(response);
+      });
+       
+
+    } else {
+
+
+
+
+
+
+  
+    
+    // utelly api
+
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -58,10 +81,11 @@ $(document).ready(function(){
 
     //  yelp api
 
-    
+    let queryYelp = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?random?term=restaurants&open_now=true&location=' + userZip
+    console.log(queryYelp)
      
     $.ajax({
-      'url': 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?random?term=restaurants&open_now=true&location=' + userZip,
+      'url': queryYelp,
       'method': 'GET',
       'timeout': 0,
       'headers': {
@@ -71,22 +95,6 @@ $(document).ready(function(){
     }).then(function (response) {
       console.log(response);
 
-      // Yelp variables
-      // var restaurantName = response.businesses[0].name;
-      // var restaurantAddress = response.businesses[0].location.display_address.join(" ");
-      // var phoneNumber = response.businesses[0].display_phone;
-      // var restaurantPrice = response.businesses[0].price;
-      // var restaurantRating = response.businesses[0].rating;
-      // var takeoutORdelivery = response.businesses[0].transactions.join(" or ");
-  
-      // console.log(restaurantName);
-      // console.log(restaurantAddress);
-      // console.log(phoneNumber);
-      // console.log(restaurantPrice);
-      // console.log(restaurantRating);
-      // console.log(takeoutORdelivery);
-  
-      // Yelp variables end
 
       // appending restaurant info onto cards
 
@@ -142,6 +150,10 @@ $(document).ready(function(){
       $(".card-3").append(pickupORdelivery3);
     
     });
+
+  }
+  
+
 
 
 
