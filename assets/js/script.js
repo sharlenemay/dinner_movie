@@ -18,7 +18,13 @@ $(document).ready(function(){
     $.ajax(settings).then(function(response) {
 
         console.log(response)
-        
+        var streamingDiv = $("<div>")
+        var platforms1 = `<div class = "available"> Available on the following platforms: </div>
+                            <a href="${response.results[0].locations[0].url}" target ="_blank" ><img src="${response.results[0].locations[0].icon}"></img></a>
+                            <a href="${response.results[0].locations[1].url}" target ="_blank" ><img src="${response.results[0].locations[1].icon}"></img></a>
+                            <a href="${response.results[0].locations[2].url}" target ="_blank" ><img src="${response.results[0].locations[2].icon}"></img></a>`
+        streamingDiv.html(platforms1)
+        $(".movie").append(streamingDiv)
 
       });
 
@@ -39,7 +45,7 @@ $(document).ready(function(){
     <p>Runtime: ${response.Runtime}<p>
     <p>Year: ${response.Year}<p>`;
 
-   var poster= `<img src="${response.Poster}"></img>`
+   var poster= `<h2> ${response.Title}</h2><br><img src="${response.Poster}"></img>`
    mediaDiv.html(poster)
    movieDetails.html(movieInfo)
       $(".media").html(mediaDiv)
@@ -51,17 +57,17 @@ $(document).ready(function(){
 
     //  yelp api
      
-     $.ajax({
-        'url': 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=la',
-        'method': 'GET',
-        'timeout': 0,
-        'headers': {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer OmvDEgirBtOBlkmuES-9OR7LSfJCXa_yH8NE_G-bTd7tlwryvLbMTMY9CZRQ0z_RhVbXTOFulwfw__ZLtcWTperxo1ofEfolgXtwQOPaIXh5FY4ID_Wdj8dQvHawXnYx'
-        },
-      }).then(function (response) {
-        // console.log(response);
-      });
+    //  $.ajax({
+    //     'url': 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=la',
+    //     'method': 'GET',
+    //     'timeout': 0,
+    //     'headers': {
+    //       'Content-Type': 'application/json',
+    //       'Authorization': 'Bearer QP_lGcZSSFBJDYiNRrOH2JlPw2BbI-gGBHWj_3rN8WGHygeuV2yXhn71rO2sbPxiZu17h6dFy2aCie6BYSqddEqNIjtMRrYsiMbV0Okb1UWgNPwafSGPJv3sHNmxXnYx'
+    //     },
+    //   }).then(function (response) {
+    //     // console.log(response);
+    //   });
 
      
         
