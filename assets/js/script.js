@@ -3,7 +3,8 @@ $(document).ready(function(){
     $(".button").on("click", function() {
 
     // utelly api
-    var userInput = $("input").val()
+    var userInput = $(".mov").val()
+    var userZip = $(".zip").val()
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -56,9 +57,11 @@ $(document).ready(function(){
      });
 
     //  yelp api
+
+    
      
     $.ajax({
-      'url': 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&limit=3&location=la',
+      'url': 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?random?term=restaurants&open_now=true&location=' + userZip,
       'method': 'GET',
       'timeout': 0,
       'headers': {
@@ -88,50 +91,53 @@ $(document).ready(function(){
       // appending restaurant info onto cards
 
       // card-1
+      var item =  $(response.businesses)
+      var shuffledRestaurants, item;
+      shuffledRestaurants = item.sort(() => Math.random() - 0.5)
       var foodDetails1 = $("<div>")
-      var foodInfo1 = `<p> ${response.businesses[0].name}</p>
-      <p>${response.businesses[0].location.display_address.join(" ")}</p>
-      <p>${response.businesses[0].display_phone}</p>
-      <p>Price: ${response.businesses[0].price}</p>
-      <p>Rating: ${response.businesses[0].rating}</p>`;
+      var foodInfo1 = `<p> ${item[0].name}</p>
+      <p>${item[0].location.display_address.join(" ")}</p>
+      <p>${item[0].display_phone}</p>
+      <p>Price: ${item[0].price}</p>
+      <p>Rating: ${item[0].rating}</p>`;
 
       foodDetails1.html(foodInfo1)
       $(".card-1").html(foodDetails1);
 
       var pickupORdelivery1 = $("<div>")
-      var sites1 = `<p>Ready for <a href="${response.businesses[0].url}" target ="_blank">${response.businesses[0].transactions.join(" or ")}</a>!</p>`
+      var sites1 = `<p>Ready for <a href="${item[0].url}" target ="_blank">${item[0].transactions.join(" or ")}</a>!</p>`
       pickupORdelivery1.html(sites1);
       $(".card-1").append(pickupORdelivery1);
 
       // card-2
       var foodDetails2 = $("<div>")
-      var foodInfo2 = `<p> ${response.businesses[1].name}</p>
-      <p>${response.businesses[1].location.display_address.join(" ")}</p>
-      <p>${response.businesses[1].display_phone}</p>
-      <p>Price: ${response.businesses[1].price}</p>
-      <p>Rating: ${response.businesses[1].rating}</p>`;
+      var foodInfo2 = `<p> ${item[1].name}</p>
+      <p>${item[1].location.display_address.join(" ")}</p>
+      <p>${item[1].display_phone}</p>
+      <p>Price: ${item[1].price}</p>
+      <p>Rating: ${item[1].rating}</p>`;
 
       foodDetails2.html(foodInfo2)
       $(".card-2").html(foodDetails2);
 
       var pickupORdelivery2 = $("<div>")
-      var sites2 = `<p>Ready for <a href="${response.businesses[1].url}" target ="_blank">${response.businesses[1].transactions.join(" or ")}</a>!</p>`
+      var sites2 = `<p>Ready for <a href="${item[1].url}" target ="_blank">${item[1].transactions.join(" or ")}</a>!</p>`
       pickupORdelivery2.html(sites2);
       $(".card-2").append(pickupORdelivery2);
 
       // card-3
       var foodDetails3 = $("<div>")
-      var foodInfo3 = `<p> ${response.businesses[2].name}</p>
-      <p>${response.businesses[2].location.display_address.join(" ")}</p>
-      <p>${response.businesses[2].display_phone}</p>
-      <p>Price: ${response.businesses[2].price}</p>
-      <p>Rating: ${response.businesses[2].rating}</p>`;
+      var foodInfo3 = `<p> ${item[2].name}</p>
+      <p>${item[2].location.display_address.join(" ")}</p>
+      <p>${item[2].display_phone}</p>
+      <p>Price: ${item[2].price}</p>
+      <p>Rating: ${item[2].rating}</p>`;
 
       foodDetails3.html(foodInfo3)
       $(".card-3").html(foodDetails3);
 
       var pickupORdelivery3 = $("<div>")
-      var sites3 = `<p>Ready for <a href="${response.businesses[2].url}" target ="_blank">${response.businesses[2].transactions.join(" or ")}</a>!</p>`
+      var sites3 = `<p>Ready for <a href="${item[2].url}" target ="_blank">${item[2].transactions.join(" or ")}</a>!</p>`
       pickupORdelivery3.html(sites3);
       $(".card-3").append(pickupORdelivery3);
     
