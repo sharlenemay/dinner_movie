@@ -57,27 +57,89 @@ $(document).ready(function(){
 
     //  yelp api
      
-    //  $.ajax({
-    //     'url': 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=la',
-    //     'method': 'GET',
-    //     'timeout': 0,
-    //     'headers': {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': 'Bearer QP_lGcZSSFBJDYiNRrOH2JlPw2BbI-gGBHWj_3rN8WGHygeuV2yXhn71rO2sbPxiZu17h6dFy2aCie6BYSqddEqNIjtMRrYsiMbV0Okb1UWgNPwafSGPJv3sHNmxXnYx'
-    //     },
-    //   }).then(function (response) {
-    //     // console.log(response);
-    //   });
+    $.ajax({
+      'url': 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&limit=3&location=la',
+      'method': 'GET',
+      'timeout': 0,
+      'headers': {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer QP_lGcZSSFBJDYiNRrOH2JlPw2BbI-gGBHWj_3rN8WGHygeuV2yXhn71rO2sbPxiZu17h6dFy2aCie6BYSqddEqNIjtMRrYsiMbV0Okb1UWgNPwafSGPJv3sHNmxXnYx'
+      },
+    }).then(function (response) {
+      console.log(response);
 
-     
-        
+      // Yelp variables
+      // var restaurantName = response.businesses[0].name;
+      // var restaurantAddress = response.businesses[0].location.display_address.join(" ");
+      // var phoneNumber = response.businesses[0].display_phone;
+      // var restaurantPrice = response.businesses[0].price;
+      // var restaurantRating = response.businesses[0].rating;
+      // var takeoutORdelivery = response.businesses[0].transactions.join(" or ");
+  
+      // console.log(restaurantName);
+      // console.log(restaurantAddress);
+      // console.log(phoneNumber);
+      // console.log(restaurantPrice);
+      // console.log(restaurantRating);
+      // console.log(takeoutORdelivery);
+  
+      // Yelp variables end
 
-      
+      // appending restaurant info onto cards
 
+      // card-1
+      var foodDetails1 = $("<div>")
+      var foodInfo1 = `<p> ${response.businesses[0].name}</p>
+      <p>${response.businesses[0].location.display_address.join(" ")}</p>
+      <p>${response.businesses[0].display_phone}</p>
+      <p>Price: ${response.businesses[0].price}</p>
+      <p>Rating: ${response.businesses[0].rating}</p>`;
+
+      foodDetails1.html(foodInfo1)
+      $(".card-1").html(foodDetails1);
+
+      var pickupORdelivery1 = $("<div>")
+      var sites1 = `<p>Ready for <a href="${response.businesses[0].url}" target ="_blank">${response.businesses[0].transactions.join(" or ")}</a>!</p>`
+      pickupORdelivery1.html(sites1);
+      $(".card-1").append(pickupORdelivery1);
+
+      // card-2
+      var foodDetails2 = $("<div>")
+      var foodInfo2 = `<p> ${response.businesses[1].name}</p>
+      <p>${response.businesses[1].location.display_address.join(" ")}</p>
+      <p>${response.businesses[1].display_phone}</p>
+      <p>Price: ${response.businesses[1].price}</p>
+      <p>Rating: ${response.businesses[1].rating}</p>`;
+
+      foodDetails2.html(foodInfo2)
+      $(".card-2").html(foodDetails2);
+
+      var pickupORdelivery2 = $("<div>")
+      var sites2 = `<p>Ready for <a href="${response.businesses[1].url}" target ="_blank">${response.businesses[1].transactions.join(" or ")}</a>!</p>`
+      pickupORdelivery2.html(sites2);
+      $(".card-2").append(pickupORdelivery2);
+
+      // card-3
+      var foodDetails3 = $("<div>")
+      var foodInfo3 = `<p> ${response.businesses[2].name}</p>
+      <p>${response.businesses[2].location.display_address.join(" ")}</p>
+      <p>${response.businesses[2].display_phone}</p>
+      <p>Price: ${response.businesses[2].price}</p>
+      <p>Rating: ${response.businesses[2].rating}</p>`;
+
+      foodDetails3.html(foodInfo3)
+      $(".card-3").html(foodDetails3);
+
+      var pickupORdelivery3 = $("<div>")
+      var sites3 = `<p>Ready for <a href="${response.businesses[2].url}" target ="_blank">${response.businesses[2].transactions.join(" or ")}</a>!</p>`
+      pickupORdelivery3.html(sites3);
+      $(".card-3").append(pickupORdelivery3);
     
-   
-
     });
+
+
+
+  });
 
 
 
