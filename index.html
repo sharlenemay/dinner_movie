@@ -4,35 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-     
+    <link rel="stylesheet" href="assets/cs/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Teko:wght@600&display=swap" rel="stylesheet">
     <title>Dinner and a Movie</title>
 </head>
 <body>
     <header>
+
         <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4"><a href="https://fontmeme.com/netflix-font/"><img src="https://fontmeme.com/permalink/200505/2c3b1b2462889b6677ac8e743e7a4829.png" alt="netflix-font" border="0"></a></h1>
-            <p class="lead"><a href="https://fontmeme.com/netflix-font/"><img src="https://fontmeme.com/permalink/200505/846a6f518bb9b78fc817ffcc19dbff13.png" alt="netflix-font" border="0"></a></p>
+
+            <h1>DINNER AND A MOVIE</h1>
+            <p class="lead">FIND SOMETHING TO WATCH AND SOMETHING TO EAT</p>
           </div>
-        </div>
+
     </header>
     
     
 
     <div class="container-fluid">
-      <div class="ui action input">
-        <input class="zip" type="text" placeholder="Zipcode...">
-        <input class="mov" type="text" placeholder="Movie...">
-        <button class="ui button">Search</button>
-      </div>
+      <div class="container">
+      <div class="row">
 
-      <br>
-
-      <div class="input-group mb-3">
-       
-        <div class="form-group">
-          <label for="pwd">Select a genre: </label>
-          <select id="genre" class="custom-select" aria-labelledby="dropdownMenuButton">
+      <div class="ui action input col-md-3">
+        <p>To start, input your zipcode</p>
+        <input class="zip" type="text" placeholder="Zipcode..."><br/>
+        <br/>
+        <p>Then type in a movie title</p>
+        <input class="mov" type="text" placeholder="Movie..."><br/><br/>
+        <div class="input-group mb-3">
+         <div class="form-group">
+           <label for="pwd">OR select a genre: </label>
+           <select id="genre" class="custom-select" aria-labelledby="dropdownMenuButton">
             <option value="28">Action</option>
             <option value="10749">Romance</option>
             <option value="27">Horror</option>
@@ -42,13 +44,13 @@
             <option value="53">Thriller</option>  
             <option value="878">Sci-Fi</option>
             <option value="14">Fantasy</option>
-          </select>        
+           </select>        
           </div>
-
-      </div>
-
-    <!-- movie description container -->
-      <div class="container">
+        </div>
+          <button class="ui button">Search</button>
+        </div>
+              <!-- movie description container -->
+      <div class="container col-md-9">
         <div class="row">
           <!-- poster -->
           <div class="col">
@@ -60,7 +62,7 @@
             </div>
           </div>
           <!-- movie details -->
-          <div class="col">
+          <div class="col d-none">
             <div class="card movie" style="width: 18rem;">
             </div>
           </div>
@@ -73,7 +75,7 @@
 
       <!-- results for food -->
 
-      <div class="container" >
+      <div class="container food" >
         <div class="row">
           <div class="col-md">
             <div class="card-1" style="width: 18rem;">
@@ -90,12 +92,13 @@
         </div>
       </div>
 
-        
+
+      </div>
+    </div>    
     </div>
+    
+    <footer>&copy; 2020</footer>
 
-     
-
-      
       <script
     src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="

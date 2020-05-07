@@ -5,6 +5,7 @@ $(document).ready(function(){
     var userInput = $(".mov").val()
     var userZip = $(".zip").val()
     $(".mov").val("")
+    $(".col").removeClass("d-none")
    
     if (userInput === "") {
       console.log(genre);
@@ -126,7 +127,7 @@ $(document).ready(function(){
       var shuffledRestaurants, item;
       shuffledRestaurants = item.sort(() => Math.random() - 0.5)
       var foodDetails1 = $("<div>")
-      var foodInfo1 = `<p> ${item[0].name}</p>
+      var foodInfo1 = `<h2> ${item[0].name}</h2>
       <p>${item[0].location.display_address.join(" ")}</p>
       <p>${item[0].display_phone}</p>
       <p>Price: ${item[0].price}</p>
@@ -142,7 +143,7 @@ $(document).ready(function(){
 
       // card-2
       var foodDetails2 = $("<div>")
-      var foodInfo2 = `<p> ${item[1].name}</p>
+      var foodInfo2 = `<h2> ${item[1].name}</h2>
       <p>${item[1].location.display_address.join(" ")}</p>
       <p>${item[1].display_phone}</p>
       <p>Price: ${item[1].price}</p>
@@ -158,7 +159,7 @@ $(document).ready(function(){
 
       // card-3
       var foodDetails3 = $("<div>")
-      var foodInfo3 = `<p> ${item[2].name}</p>
+      var foodInfo3 = `<h2> ${item[2].name}</h2>
       <p>${item[2].location.display_address.join(" ")}</p>
       <p>${item[2].display_phone}</p>
       <p>Price: ${item[2].price}</p>
@@ -259,7 +260,7 @@ $(document).ready(function(){
       var shuffledRestaurants, item;
       shuffledRestaurants = item.sort(() => Math.random() - 0.5)
       var foodDetails1 = $("<div>")
-      var foodInfo1 = `<p> ${item[0].name}</p>
+      var foodInfo1 = `<h2> ${item[0].name}</h2>
       <p>${item[0].location.display_address.join(" ")}</p>
       <p>${item[0].display_phone}</p>
       <p>Price: ${item[0].price}</p>
@@ -275,7 +276,7 @@ $(document).ready(function(){
 
       // card-2
       var foodDetails2 = $("<div>")
-      var foodInfo2 = `<p> ${item[1].name}</p>
+      var foodInfo2 = `<h2> ${item[1].name}</h2>
       <p>${item[1].location.display_address.join(" ")}</p>
       <p>${item[1].display_phone}</p>
       <p>Price: ${item[1].price}</p>
@@ -291,7 +292,7 @@ $(document).ready(function(){
 
       // card-3
       var foodDetails3 = $("<div>")
-      var foodInfo3 = `<p> ${item[2].name}</p>
+      var foodInfo3 = `<h2> ${item[2].name}</h2>
       <p>${item[2].location.display_address.join(" ")}</p>
       <p>${item[2].display_phone}</p>
       <p>Price: ${item[2].price}</p>
