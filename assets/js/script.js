@@ -4,7 +4,8 @@ $(document).ready(function(){
     var genre = $("#genre :selected").val()
     var userInput = $(".mov").val()
     var userZip = $(".zip").val()
-    
+    $(".mov").val("")
+   
     if (userInput === "") {
       console.log(genre);
       
@@ -57,7 +58,7 @@ $(document).ready(function(){
             "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
             "x-rapidapi-key": "4c97934023msh3250a0121b20ff6p1bb671jsn532fd66b8826"
         }
-
+           
       }
       $.ajax(settings).then(function(response) {
 
@@ -74,10 +75,36 @@ $(document).ready(function(){
 
 
       });
-
+      
+      var category = "";
+      if(genre=="27"){
+        category = "comfortfood,vegan"
+      }else if(genre=="10749"){
+        category = "italian,french,bistros,vegan"
+      } 
+      else if(genre=="28"){
+        category = "diners,pubfood,vegan"
+      }
+      else if(genre=="10751"){
+        category = "pizza,chicken_wings,hotdogs,breakfast_brunch,vegan,All"
+      }
+      else if(genre=="53"){
+        category = "cajun,bbq,soulfood,vegan"
+      }
+      else if(genre=="878"){
+        category = "asianfusion,asian,sushi,ramen,vegan,All"
+      }
+      else if(genre=="14"){
+        category = "gastropub,british,vegan"
+      }
+      else{
+        category = ""
+      
+      }
+      
         
     //  yelp api
-    let queryYelp = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?random?term=restaurants&open_now=true&location=' + userZip
+    let queryYelp = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?random?term=restaurants&open_now=true&location=' + userZip + '&categories=' + category
     console.log(queryYelp)
      
     $.ajax({
@@ -150,12 +177,6 @@ $(document).ready(function(){
 
     } else {
 
-
-
-
-
-
-  
     
     // utelly api
 
@@ -180,7 +201,7 @@ $(document).ready(function(){
                             <a href="${response.results[0].locations[2].url}" target ="_blank" ><img src="${response.results[0].locations[2].icon}"></img></a>`
         streamingDiv.html(platforms1)
         $(".movie").append(streamingDiv)
-
+     
       });
 
 
@@ -200,19 +221,23 @@ $(document).ready(function(){
     <p>Runtime: ${response.Runtime}<p>
     <p>Year: ${response.Year}<p>`;
 
+     
+
    var poster= `<h2> ${response.Title}</h2><br><img src="${response.Poster}"></img>`
    mediaDiv.html(poster)
    movieDetails.html(movieInfo)
       $(".media").html(mediaDiv)
       $(".movie").html(movieDetails)
+     
 
 
     console.log(plot,meta,year,runtime,poster);
      });
 
     //  yelp api
+ 
 
-    let queryYelp = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?random?term=restaurants&open_now=true&location=' + userZip
+    let queryYelp = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?random?term=restaurants&open_now=true&location=' + userZip 
     console.log(queryYelp)
      
     $.ajax({
@@ -281,7 +306,7 @@ $(document).ready(function(){
       $(".card-3").append(pickupORdelivery3);
     
     });
-
+   
   }
   
 
