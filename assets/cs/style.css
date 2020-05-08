@@ -30,7 +30,7 @@ h2{
 
 .movie {
     padding: 5px;
-    width: 350px !important;
+    width: 100% !important;
     margin-top: 40px;
 }
 
@@ -56,6 +56,7 @@ footer {
     
 }
 
+/* iPad */
 @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
@@ -70,18 +71,21 @@ footer {
     }
     footer {
         bottom: 0;
-        position: absolute;
         width: 100%;
+    }
+    .tag {
+        font-size: 30px;
     }
 
 }
 
+/* iPhone 6-X Responsiveness */
 @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 768px) 
   and (-webkit-min-device-pixel-ratio: 3) { 
     h1 {
-        font-size: 30px;
+        font-size: 40px;
         width: 100%;
     }
     .lead {
@@ -90,10 +94,41 @@ footer {
     }
     footer {
         bottom: 0;
-        position: absolute;
         width: 100%;
+        position: fixed;
+    }
+    .tag {
+        font-size: 10px;
+    }
+    #restandmoves {
+        margin-bottom: 70px;
     }
 
+}
+
+/* iPhone 5 Responsiveness */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 375px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    h1 {
+        font-size: 40px;
+        width: 100%;
+    }
+    .lead {
+        font-size: 20px;
+        width: 100%;
+    }
+    footer {
+        bottom: 0;
+        width: 100%;
+    }
+    .tag {
+        font-size: 10px;
+    }
+    .media div img {
+        width: 100%;
+    }
 }
 
 
