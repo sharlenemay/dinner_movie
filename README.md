@@ -10,6 +10,9 @@ IF I submit a title then I am shown the movie’s data and options for its strea
 IF I choose a genre from the dropdown menu, then a random movie in that genre is selected for me.
 THEN three local restaurants capable of delivery or ready for pickup are paired with my movie through a custom search and links are provided to the restaurants’ webpages.
 ```
+### URL
+
+https://sharlenemay.github.io/dinner_movie/
 
 ### Site Preview:
 
